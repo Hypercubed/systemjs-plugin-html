@@ -1,4 +1,4 @@
-plugin-json
+systemjs-plugin-html
 ===========
 
-JSON loader plugin
+HTML Import plugin

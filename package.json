@@ -1,14 +1,14 @@
 {
-  "name": "systemjs-plugin-json",
-  "version": "0.1.0",
-  "main": "json",
+  "name": "systemjs-plugin-html",
+  "version": "0.0.1",
+  "main": "html",
   "repository": {
     "type": "git",
-    "url": "http://github.com/systemjs/plugin-json.git"
+    "url": "http://github.com/Hypercubed/systemjs-plugin-html.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/systemjs/plugin-json/issues"
+    "url": "https://github.com/Hypercubed/systemjs-plugin-html/issues"
   },
-  "homepage": "https://github.com/systemjs/plugin-json"
+  "homepage": "https://github.com/Hypercubed/systemjs-plugin-html"
 }
