@@ -1,47 +1,61 @@
 /*
   HTML Import plugin
 */
-var waitSeconds = 100;
 
-var head = document.getElementsByTagName('head')[0];
+if (typeof window !== 'undefined') {
+  var waitSeconds = 100;
 
-var noop = function() {};
+  var head = document.getElementsByTagName('head')[0];
 
-function importHref(url) {
+  var noop = function() {};
 
-  return new Promise(function(resolve, reject) {
+  exports.fetch = function(load) {
+    return importHref(load.address);
+  };
 
-    var timeout = setTimeout(function() {
-      reject('Unable to load HTML');
-    }, waitSeconds * 1000);
-    var _callback = function(error) {
-      clearTimeout(timeout);
-      link.onload = link.onerror = noop;
-      setTimeout(function() {
-        if (error)
-          reject(error);
-        else
-          resolve('');
-      }, 7);
-    };
+  function importHref(url) {
 
-    var link = document.createElement('link');
-    link.rel = 'import';
-    link.href = url;
+    return new Promise(function(resolve, reject) {
 
-    link.onload = function() {
-      _callback();
-    };
+      var timeout = setTimeout(function() {
+        reject('Unable to load HTML');
+      }, waitSeconds * 1000);
+      var _callback = function(error) {
+        clearTimeout(timeout);
+        link.onload = link.onerror = noop;
+        setTimeout(function() {
+          if (error)
+            reject(error);
+          else
+            resolve('');
+        }, 7);
+      };
 
-    link.onerror = function(event) {
-      _callback(event.error);
-    };
+      var link = document.createElement('link');
+      link.rel = 'import';
+      link.href = url;
 
-    head.appendChild(link);
-  });
+      link.onload = function() {
+        _callback();
+      };
 
+      link.onerror = function(event) {
+        _callback(event.error);
+      };
+
+      head.appendChild(link);
+    });
+
+  }
+
+} else {
+  exports.fetch = function(load) {
+    load.metadata.build = false;
+    load.metadata.format = 'defined';
+    return '';
+  };
+  exports.instantiate = function() {};
+  exports.bundle = function(loads, opts) {
+    return '';
+  };
 }
-
-exports.fetch = function(load) {
-  return importHref(load.address);
-};
