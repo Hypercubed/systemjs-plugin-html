@@ -4,13 +4,30 @@
     <meta charset="utf-8">
     <title>TEST</title>
 
-    <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-lite.js"></script>
-
-    <link rel="import" href="elements.html">
+    <!-- PRODUCTION -->
+    <!-- to create elements.html run: -->
+    <!-- jspm bundle-sfx main -->
+    <!-- <link rel="import" href="elements.html"> -->
 
   </head>
   <body>
     <dom-element-one></dom-element-one>
     <dom-element-two></dom-element-two>
+
+    <!-- DEV -->
+
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.import('./main');
+    </script>
+
+    <!-- PRODUCTION -->
+    <!-- to create build.js run: -->
+    <!-- jspm bundle-sfx main -->
+    <!--
+    <script src="build.js"></script> \
+    -->
+
   </body>
 </html>

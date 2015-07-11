@@ -45,6 +45,8 @@ if (typeof window !== 'undefined') {
       };
 
       head.appendChild(link);
+
+      return true;
     });
 
   }
@@ -58,7 +60,9 @@ if (typeof window !== 'undefined') {
   exports.instantiate = function() {};
   exports.bundle = function(loads, opts) {
     var loader = this;
-    return loader['import']('./html-builder', { name: module.id }).then(function(builder) {
+    return loader['import']('./html-builder', {
+      name: module.id
+    }).then(function(builder) {
       return builder.call(loader, loads, opts);
     }, function() {
       throw new Error('ERROR!');
