@@ -10,5 +10,22 @@
   "bugs": {
     "url": "https://github.com/Hypercubed/systemjs-plugin-html/issues"
   },
-  "homepage": "https://github.com/Hypercubed/systemjs-plugin-html"
+  "homepage": "https://github.com/Hypercubed/systemjs-plugin-html",
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "minimize": "npm:minimize@^1.5.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    },
+    "overrides": {
+      "npm:html-minifier@0.7.2": {
+        "format": "global",
+        "dependencies": {}
+      }
+    }
+  }
 }

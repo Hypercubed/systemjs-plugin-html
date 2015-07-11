@@ -20,6 +20,7 @@ if (typeof window !== 'undefined') {
       var timeout = setTimeout(function() {
         reject('Unable to load HTML');
       }, waitSeconds * 1000);
+
       var _callback = function(error) {
         clearTimeout(timeout);
         link.onload = link.onerror = noop;
@@ -50,12 +51,17 @@ if (typeof window !== 'undefined') {
 
 } else {
   exports.fetch = function(load) {
-    load.metadata.build = false;
+    load.metadata.build = true;
     load.metadata.format = 'defined';
     return '';
   };
   exports.instantiate = function() {};
   exports.bundle = function(loads, opts) {
-    return '';
+    var loader = this;
+    return loader['import']('./html-builder', { name: module.id }).then(function(builder) {
+      return builder.call(loader, loads, opts);
+    }, function() {
+      throw new Error('ERROR!');
+    });
   };
 }
