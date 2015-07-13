@@ -5,11 +5,15 @@
 
   System.config({
     map: {
-      html: './html.js'
+      html: '../html.js'
     }
   });
 
-  System.import('html.html!').then(console.log.bind(console));
+  System.import('dom-element.html!').then(console.log.bind(console));
 </script>
 
 <dom-element></dom-element>
+
+<p>
+  Outside the dom-element
+</p>
