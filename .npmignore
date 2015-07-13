@@ -1,3 +1,5 @@
 jspm_packages
-import-test
-import-two-elements-test
+import-example
+import-two-elements-example
+test
+config.js
