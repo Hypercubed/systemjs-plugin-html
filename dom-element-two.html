@@ -1,17 +1,20 @@
 <dom-module id="dom-element-two">
 
   <style>
-    :host p {
+    :host {
+      display: block;
       font-weight: bold;
       font-family: sans-serif;
       color: steelblue;
       background: yellow;
       padding: 0.4em;
+      margin: 0.8em 0;
     }
   </style>
 
   <template>
-    <p>I'm DOM element TWO.</p>
+    <p>I'm TWO.</p>
+    <content></content>
   </template>
 
 </dom-module>
