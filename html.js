@@ -1,61 +1,52 @@
 /*
   HTML Import plugin
+  Adapted from systemjs/plugin-css
+  https://github.com/systemjs/plugin-css
 */
 
-if (typeof window !== 'undefined') {
-  var waitSeconds = 100;
+exports.build = false;
 
-  var head = document.getElementsByTagName('head')[0];
+exports.fetch = function(load) {
+  return importHref(load);
+};
 
-  var noop = function() {};
+exports.instantiate = function(load) {
+  return load.metadata.link.import;
+};
 
-  exports.fetch = function(load) {
-    return importHref(load.address);
-  };
+var waitSeconds = 100;
+var head = (typeof document !== 'undefined') ? document.getElementsByTagName('head')[0] : null;
 
-  function importHref(url) {
+function importHref(load) {
 
-    return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
 
-      var timeout = setTimeout(function() {
-        reject('Unable to load HTML');
-      }, waitSeconds * 1000);
-      var _callback = function(error) {
-        clearTimeout(timeout);
-        link.onload = link.onerror = noop;
-        setTimeout(function() {
-          if (error)
-            reject(error);
-          else
-            resolve('');
-        }, 7);
-      };
+    var timeout = setTimeout(function() {
+      reject('Unable to load HTML');
+    }, waitSeconds * 1000);
+    var _callback = function(error) {
+      clearTimeout(timeout);
+      link.onload = link.onerror = function() {};
+      setTimeout(function() {
+        if (error)
+          reject(error);
+        else
+          resolve('');
+      }, 7);
+    };
 
-      var link = document.createElement('link');
-      link.rel = 'import';
-      link.href = url;
+    var link = load.metadata.link = document.createElement('link');
+    link.rel = 'import';
+    link.href = load.address;
 
-      link.onload = function() {
-        _callback();
-      };
+    link.onload = function() {
+      _callback();
+    };
 
-      link.onerror = function(event) {
-        _callback(event.error);
-      };
+    link.onerror = function(event) {
+      _callback(event.error);
+    };
 
-      head.appendChild(link);
-    });
-
-  }
-
-} else {
-  exports.fetch = function(load) {
-    load.metadata.build = false;
-    load.metadata.format = 'defined';
-    return '';
-  };
-  exports.instantiate = function() {};
-  exports.bundle = function(loads, opts) {
-    return '';
-  };
+    document.getElementsByTagName('head')[0].appendChild(link);
+  });
 }
