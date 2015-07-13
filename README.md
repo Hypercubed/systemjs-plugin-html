@@ -3,6 +3,12 @@ systemjs-plugin-html
 
 HTML Import plugin
 
+## Install
+
+```
+jspm install html=github:Hypercubed/systemjs-plugin-html
+```
+
 ## Basic usage
 
 ```
