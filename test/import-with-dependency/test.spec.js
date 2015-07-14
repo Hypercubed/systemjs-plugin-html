@@ -5,7 +5,12 @@ describe('HTML import Polymer web component with dependency', function() {
 
   var doc = null;
 
-  beforeEach(function() {
+  before(function() {
+    var d = document.createElement('div');
+    d.style.visibility = 'hidden';
+    d.innerHTML = '<dom-element-dep id="dom-element-dep-instance"></dom-element-dep>';
+    document.body.appendChild(d);
+
     return System.import('test/import-with-dependency/dom-element.html!').then(function(data) {
       doc = data;
     });

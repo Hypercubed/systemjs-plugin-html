@@ -27,7 +27,25 @@ The bundling is not implemented at the moment.
 
 ## Tests
 
-Use [http-server](https://github.com/indexzero/http-server) and navigate to [http://localhost:8080/test/](http://localhost:8080/test/)
+Testing using karma:
+
+```
+karma start
+```
+
+or use [http-server](https://github.com/indexzero/http-server) and navigate to [http://localhost:8080/test/](http://localhost:8080/test/)
+
+Tested with:
+
+* JSPM v0.15.7
+* SystemJS v0.16.11
+
+Tested in:
+
+* Chrome Version 43.0.2357.132 m
+* IE 11.0.9600
+* Firefox 39.0
+* Firefox 41.0a2
 
 ## License
 

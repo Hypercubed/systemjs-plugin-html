@@ -4,7 +4,7 @@
   https://github.com/systemjs/plugin-css
 */
 
-require('webcomponentsjs/webcomponents-lite');
+require('webcomponentsjs/webcomponents-lite.min');
 
 exports.build = false;
 

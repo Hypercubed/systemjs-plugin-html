@@ -1,11 +1,17 @@
+
 import chai from 'chai';
 const expect = chai.expect;
 
-describe('HTML import Polymer web compoenent', function() {
+describe('HTML import Polymer web component', function() {
 
   var doc = null;
 
-  beforeEach(function() {
+  before(function() {
+    var d = document.createElement('div');
+    d.style.visibility = 'hidden';
+    d.innerHTML = '<dom-element id="dom-element-instance"></dom-element>';
+    document.body.appendChild(d);
+
     return System.import('test/import/dom-element.html!').then(function(data) {
       doc = data;
     });
