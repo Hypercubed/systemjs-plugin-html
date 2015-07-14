@@ -23,6 +23,12 @@ The html file is imported as an [HTML import](http://www.html5rocks.com/en/tutor
 
 The bundling is not implemented at the moment.
 
+[See examples in the test folder](https://github.com/Hypercubed/systemjs-plugin-html/tree/master/test)
+
+## Tests
+
+Use [http-server](https://github.com/indexzero/http-server) and navigate to [http://localhost:8080/test/](http://localhost:8080/test/)
+
 ## License
 
 MIT

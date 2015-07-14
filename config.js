@@ -16,6 +16,7 @@ System.config({
     "polymer": "github:Polymer/polymer@1.0.6",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
+    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.6",
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.3.1"
     },
@@ -44,3 +45,4 @@ System.config({
     }
   }
 });
+

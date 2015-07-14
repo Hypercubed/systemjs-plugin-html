@@ -13,6 +13,9 @@
   "homepage": "https://github.com/Hypercubed/systemjs-plugin-html",
   "jspm": {
     "directories": {},
+    "dependencies": {
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.6"
+    },
     "devDependencies": {
       "chai": "npm:chai@^3.0.0",
       "marked": "github:chjj/marked@^0.3.3",

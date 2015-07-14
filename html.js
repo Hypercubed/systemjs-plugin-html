@@ -4,6 +4,8 @@
   https://github.com/systemjs/plugin-css
 */
 
+require('webcomponentsjs/webcomponents-lite');
+
 exports.build = false;
 
 exports.fetch = function(load) {
@@ -17,21 +19,25 @@ exports.instantiate = function(load) {
 var waitSeconds = 100;
 var head = (typeof document !== 'undefined') ? document.getElementsByTagName('head')[0] : null;
 
+function errCallback(err) {
+  setTimeout(function() { throw err; });
+}
+
 // from https://github.com/ModuleLoader/es6-module-loader/issues/95#issuecomment-98705035
-function componentCallback(e) {
+function componentCallback(e, load) {
   var scripts = e.getElementsByTagName('script');
   var Q = [];
   for (var i = 0; i < scripts.length; i++) {
     var script = scripts[i];
     if (script.type == 'module') {
       var source = script.innerHTML.substr(1);
-      var p = System.module(source)
-        .catch(function(err) { setTimeout(function() { throw err; }); });
+      var p = System.module(source, load)
+        .catch(errCallback);
       Q.push(p);
     }
   }
   return Promise.all(Q);
-};
+}
 
 function importHref(load) {
 
@@ -56,7 +62,7 @@ function importHref(load) {
     link.href = load.address;
 
     link.onload = function() {
-      componentCallback(link.import).then(function() {
+      componentCallback(link.import, load).then(function() {
         _callback();
       });
     };
