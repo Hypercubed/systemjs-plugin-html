@@ -17,6 +17,22 @@ exports.instantiate = function(load) {
 var waitSeconds = 100;
 var head = (typeof document !== 'undefined') ? document.getElementsByTagName('head')[0] : null;
 
+// from https://github.com/ModuleLoader/es6-module-loader/issues/95#issuecomment-98705035
+function componentCallback(e) {
+  var scripts = e.getElementsByTagName('script');
+  var Q = [];
+  for (var i = 0; i < scripts.length; i++) {
+    var script = scripts[i];
+    if (script.type == 'module') {
+      var source = script.innerHTML.substr(1);
+      var p = System.module(source)
+        .catch(function(err) { setTimeout(function() { throw err; }); });
+      Q.push(p);
+    }
+  }
+  return Promise.all(Q);
+};
+
 function importHref(load) {
 
   return new Promise(function(resolve, reject) {
@@ -40,7 +56,9 @@ function importHref(load) {
     link.href = load.address;
 
     link.onload = function() {
-      _callback();
+      componentCallback(link.import).then(function() {
+        _callback();
+      });
     };
 
     link.onerror = function(event) {

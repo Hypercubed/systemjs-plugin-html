@@ -1,12 +1,12 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-describe('HTML import', function() {
+describe('HTML import Polymer web compoenent', function() {
 
   var doc = null;
 
   beforeEach(function() {
-    return System.import('../import-example/dom-element.html!').then(function(data) {
+    return System.import('test/import/dom-element.html!').then(function(data) {
       doc = data;
     });
   });

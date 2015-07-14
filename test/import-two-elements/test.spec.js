@@ -6,7 +6,7 @@ describe('JS import with HTML import dependency', function() {
   var main = null;
 
   beforeEach(function() {
-    return System.import('../import-two-elements-example/main').then(function(m) {
+    return System.import('test/import-two-elements/main').then(function(m) {
       main = m;
     });
   });
@@ -14,6 +14,11 @@ describe('JS import with HTML import dependency', function() {
   it('exports polymer constructors', function () {
     expect(main.domElementOne.prototype.is).to.equal('dom-element-one');
     expect(main.domElementTwo.prototype.is).to.equal('dom-element-two');
+  });
+
+  it('exports imported documents', function () {
+    expect(main.domElementOneImport).to.be.an.instanceof(HTMLDocument);
+    expect(main.domElementTwoImport).to.be.an.instanceof(HTMLDocument);
   });
 
 });

@@ -11,7 +11,9 @@ System.config({
 System.config({
   "map": {
     "chai": "npm:chai@3.0.0",
+    "marked": "github:chjj/marked@0.3.3",
     "mocha": "npm:mocha@2.2.5",
+    "polymer": "github:Polymer/polymer@1.0.6",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "github:jspm/nodelibs-buffer@0.1.0": {
@@ -42,4 +44,3 @@ System.config({
     }
   }
 });
-
