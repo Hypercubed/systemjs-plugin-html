@@ -1,5 +1,5 @@
-<link rel="import"
-      href="//www.polymer-project.org/1.0/samples/components/polymer/polymer.html">
+<!-- link rel="import"
+      href="../polymer/polymer.html"  -->
 
 <dom-module id="dom-element-dep">
 
@@ -17,9 +17,7 @@
   </template>
 
   <script type="module">
-    // can't do this when testing because other modules load a diffrent version of polymer
-    // this is not a problem if all compoennets use the jspm installed version of polymer
-    // import 'polymer/polymer.html!html';
+    import Polymer from 'polymerjs';
     import marked from 'marked';
 
     Polymer({

@@ -1,7 +1,7 @@
 <link rel="import"
       href="../polymer/polymer.html">
 
-<dom-module id="dom-element-two">
+<dom-module id="dom-element-two2">
 
   <style>
     :host p {
@@ -14,7 +14,13 @@
   </style>
 
   <template>
-    <p>I'm DOM element TWO.</p>
+    <p>I'm nested DOM element TWO.</p>
   </template>
+
+  <script>
+    Polymer({
+      is: 'dom-element-two2'
+    });
+  </script>
 
 </dom-module>

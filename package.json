@@ -1,6 +1,6 @@
 {
   "name": "systemjs-plugin-html",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "html",
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
       "polymer": "github:Polymer/polymer@^1.0.6",
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
+    },
+    "buildConfig": {
+      "transpileES6": true,
+      "minify": true
     }
   },
   "description": "systemjs-plugin-html",

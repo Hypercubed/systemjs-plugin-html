@@ -13,10 +13,11 @@ System.config({
     "chai": "npm:chai@3.0.0",
     "marked": "github:chjj/marked@0.3.3",
     "mocha": "npm:mocha@2.2.5",
-    "polymer": "github:Polymer/polymer@1.0.6",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.6",
+    "polymer": "github:Polymer/polymer@1.0.6",
+    "polymerjs": "test/polymer/polymer",
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.3.1"
     },
@@ -45,4 +46,3 @@ System.config({
     }
   }
 });
-
