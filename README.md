@@ -21,9 +21,11 @@ The html file is imported as an [HTML import](http://www.html5rocks.com/en/tutor
 <link rel="import" href="./dom-element.html">
 ```
 
-The bundling is not implemented at the moment.
-
 [See examples in the test folder](https://github.com/Hypercubed/systemjs-plugin-html/tree/master/test)
+
+## Bundling
+
+Bundling of html files is done using [Vulcanize](Polymer/vulcanize).  When bundling an `imports.html` will be created along side the `build.js` file.  You can disable html imports bundling by setting `System.buildHTML = false`.
 
 ## Tests
 
