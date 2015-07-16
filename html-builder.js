@@ -1,7 +1,8 @@
 // Credits:
 // Guy Bedford https://github.com/guybedford
 
-var Minimize = require('minimize');
+var Vulcan = System._nodeRequire('vulcanize');
+var Promise = global.Promise || System._nodeRequire('es6-promise').Promise;
 //var CleanCSS = require('clean-css');
 
 // it's bad to do this in general, as code is now heavily environment specific
@@ -28,73 +29,25 @@ module.exports = function bundle(loads, opts) {
   }).join('\n');
 
   var rootURL = loader.rootURL || fromFileURL(loader.baseURL);
-
+  var tmpFile = opts.outFile.replace(/build\.js$/, 'elements.tmp');
   var outFile = opts.outFile.replace(/build\.js$/, 'elements.html');
 
-  var output = loads.map(function(load) {
-    return fs.readFileSync(fromFileURL(load.address), {
-      encoding: 'utf-8'
-    });
-  }).join('\n');
-
-  var minimize = new Minimize({
-    empty: false, // KEEP empty attributes
-    cdata: true, // KEEP CDATA from scripts
-    comments: false, // KEEP comments
-    ssi: false, // KEEP Server Side Includes
-    conditionals: true, // KEEP conditional internet explorer comments
-    spare: false, // KEEP redundant attributes
-    quotes: false, // KEEP arbitrary quotes
-    loose: false // KEEP one whitespace
+  var vulcan = new Vulcan({
+    excludes: [],
+    inlineScripts: true,
+    inlineCss: true,
+    implicitStrip: true,
+    stripComments: true
   });
 
-  var cssOptimize = false; //opts.minify && opts.cssOptimize !== false;
+  var output = loads.map(function(load) {
+    return '<link rel="import" href="'+fromFileURL(load.address)+'">';
+  }).join('\n');
 
-  var cleanCSSOpts = {
-    advanced: cssOptimize,
-    agressiveMerging: cssOptimize,
-    mediaMerging: cssOptimize,
-    restructuring: cssOptimize,
-    shorthandCompacting: cssOptimize
-  };
+  fs.writeFileSync(outFile, output);
 
-  /* minimize.use('cssExternal', {
-    element: function element(node, next) {
-      if (node.name === 'link' &&
-        node.attribs.rel === 'import' && node.attribs.type === 'css') {
-
-        var source = fs.readFileSync(
-          fromFileURL(rootURL + node.attribs.href), {
-            encoding: 'utf-8'
-          }
-        );
-
-        node.type = 'style';
-        node.name = 'style';
-        node.attribs = {};
-        node.children = [{
-          data: source,
-          type: 'text'
-        }];
-      }
-      next();
-    }
-  }); */
-
-  /* minimize.use('cssInternal', {
-    element: function element(node, next) {
-      if (node.name === 'style') {
-
-        var minified = new CleanCSS(cleanCSSOpts)
-          .minify(node.children[0].data).styles;
-
-        node.children[0].data = minified;
-      }
-      next();
-    }
-  }); */
-
-  minimize.parse(output, function(error, data) {
+  vulcan.process(outFile, function(error, data) {
+    if (error) { return reject(error); }
     output = data;
     fs.writeFileSync(outFile, output);
   });
