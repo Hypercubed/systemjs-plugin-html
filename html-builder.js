@@ -24,13 +24,8 @@ function fromFileURL(address) {
 module.exports = function bundle(loads, opts) {
   var loader = this;
 
-  var stubDefines = loads.map(function(load) {
-    return "System\.register('" + load.name + "', [], false, function() {});";
-  }).join('\n');
-
   var rootURL = loader.rootURL || fromFileURL(loader.baseURL);
-  var tmpFile = opts.outFile.replace(/build\.js$/, 'elements.tmp');
-  var outFile = opts.outFile.replace(/build\.js$/, 'elements.html');
+  var outFile = opts.outFile.replace(/build\.js$/, 'imports.html');
 
   var vulcan = new Vulcan({
     excludes: [],
@@ -52,5 +47,7 @@ module.exports = function bundle(loads, opts) {
     fs.writeFileSync(outFile, output);
   });
 
-  return stubDefines;
+  return loads.map(function(load) {
+    return "System\.register('" + load.name + "', [], false, function() {});";
+  }).join('\n');
 };
