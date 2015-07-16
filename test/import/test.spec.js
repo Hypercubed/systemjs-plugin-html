@@ -1,6 +1,5 @@
-
-import chai from 'chai';
-const expect = chai.expect;
+var chai = require('chai');
+var expect = chai.expect;
 
 describe('HTML import Polymer web component', function() {
 

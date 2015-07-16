@@ -1,3 +1,5 @@
+console.log('test.js');
+
 var mocha = require('mocha');
 mocha.setup('bdd');
 

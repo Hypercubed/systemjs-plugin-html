@@ -8,11 +8,11 @@ module.exports = function (config) {
     jspm: {
 			packages: 'jspm_packages/',
       config: 'config.js',
-      loadFiles: ['test/**/*.spec.js'],
-      serveFiles: ['html.js','test/**/!(*spec).js','test/**/*.html','test/**/*.css']
+      loadFiles: ['test/**/test.spec.js'],
+      serveFiles: ['html.js','test/**/*.js','test/**/*.html','test/**/*.css']
     },
     proxies: {
-        '/test': '/base/test'
+      '/test': '/base/test'
     },
     browsers: ['Chrome'],
     reporters: ['mocha'],
