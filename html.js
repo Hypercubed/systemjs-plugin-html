@@ -17,15 +17,22 @@ if (typeof window !== 'undefined') {
     return load.metadata.link.import;
   };
 } else {
+
   exports.fetch = function(load) {
-    load.metadata.build = false;
+    load.metadata.build = true;
     load.metadata.format = 'defined';
     return '';
   };
   exports.instantiate = function() {};
   exports.bundle = function(loads, opts) {
-    return '';
+    var loader = this;
+    return loader['import']('./html-builder', { name: module.id }).then(function(builder) {
+      return builder.call(loader, loads, opts);
+    }, function(err) {
+      throw err;
+    });
   };
+
 }
 
 var waitSeconds = 100;

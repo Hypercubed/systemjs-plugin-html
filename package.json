@@ -14,6 +14,7 @@
   "jspm": {
     "directories": {},
     "dependencies": {
+      "minimize": "npm:minimize@^1.5.0",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.6"
     },
     "devDependencies": {

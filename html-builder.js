@@ -2,7 +2,7 @@
 // Guy Bedford https://github.com/guybedford
 
 var Minimize = require('minimize');
-var CleanCSS = require('clean-css');
+//var CleanCSS = require('clean-css');
 
 // it's bad to do this in general, as code is now heavily environment specific
 var fs = System._nodeRequire('fs');
@@ -48,7 +48,7 @@ module.exports = function bundle(loads, opts) {
     loose: false // KEEP one whitespace
   });
 
-  var cssOptimize = opts.minify && opts.cssOptimize !== false;
+  var cssOptimize = false; //opts.minify && opts.cssOptimize !== false;
 
   var cleanCSSOpts = {
     advanced: cssOptimize,
@@ -58,7 +58,7 @@ module.exports = function bundle(loads, opts) {
     shorthandCompacting: cssOptimize
   };
 
-  minimize.use('cssExternal', {
+  /* minimize.use('cssExternal', {
     element: function element(node, next) {
       if (node.name === 'link' &&
         node.attribs.rel === 'import' && node.attribs.type === 'css') {
@@ -79,9 +79,9 @@ module.exports = function bundle(loads, opts) {
       }
       next();
     }
-  });
+  }); */
 
-  minimize.use('cssInternal', {
+  /* minimize.use('cssInternal', {
     element: function element(node, next) {
       if (node.name === 'style') {
 
@@ -92,7 +92,7 @@ module.exports = function bundle(loads, opts) {
       }
       next();
     }
-  });
+  }); */
 
   minimize.parse(output, function(error, data) {
     output = data;
