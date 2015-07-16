@@ -10,6 +10,7 @@ describe('HTML imports', function() {
 });
 
 describe('JS imports', function() {
+	require('./import-js/test.spec');
 	require('./import-two-elements/test.spec');
 });
 
