@@ -1,7 +1,9 @@
 systemjs-plugin-html
 ===========
 
-HTML Import plugin
+Bridging the gap between SystemJS (Universal dynamic module loader) and HTML imports.  Load HTML imports via SystemJS, include SystemJS modules (ES6, AMD, CommonJS) in HTML Imports, building using vulcanize via jspm and SystemJS builder.
+
+***Watch out: This project is an experiment.  The HTML imports specification is still in flux and SystemJS is still new.***
 
 [![Build Status](https://travis-ci.org/Hypercubed/systemjs-plugin-html.svg?branch=master)](https://travis-ci.org/Hypercubed/systemjs-plugin-html)
 
