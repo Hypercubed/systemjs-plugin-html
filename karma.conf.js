@@ -4,7 +4,7 @@ module.exports = function (config) {
   config.set({
     autoWatch: true,
     singleRun: true,
-    frameworks: ['jspm', 'mocha','sinon-chai','phantomjs-shim'],
+    frameworks: ['jspm', 'mocha','sinon-chai'],
     jspm: {
 			packages: 'jspm_packages/',
       config: 'config.js',
@@ -14,7 +14,7 @@ module.exports = function (config) {
     proxies: {
       '/test': '/base/test'
     },
-    browsers: ['Chrome'],
+    browsers: ['Chrome','IE','Firefox'],  // web compoenents don't work in PahntomJS
     reporters: ['mocha'],
   });
 };

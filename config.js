@@ -7,7 +7,12 @@ System.config({
     "npm:*": "jspm_packages/npm/*.js"
   },
   "buildCSS": false,
-  "defaultJSExtensions": true
+  "defaultJSExtensions": true,
+  "vulvanizeHTML": {
+    "excludes": [
+      "jspm_packages/github/Polymer/polymer@1.0.6/polymer.html"
+    ]
+  }
 });
 
 System.config({
@@ -48,3 +53,4 @@ System.config({
     }
   }
 });
+
