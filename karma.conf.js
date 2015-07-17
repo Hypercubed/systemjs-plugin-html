@@ -1,7 +1,7 @@
 /* global module */
 module.exports = function (config) {
   'use strict';
-  config.set({
+  var configuration = {
     autoWatch: true,
     singleRun: true,
     frameworks: ['jspm', 'mocha','sinon-chai'],
@@ -14,7 +14,19 @@ module.exports = function (config) {
     proxies: {
       '/test': '/base/test'
     },
-    browsers: ['Chrome','IE','Firefox'],  // web compoenents don't work in PahntomJS
+    browsers: ['Chrome','IE','Firefox'],  // web compoenents don't work in PhantomJS
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     reporters: ['mocha'],
-  });
+  };
+
+  if(process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci','Firefox'];
+  }
+
+  config.set(configuration);
 };
