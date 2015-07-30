@@ -30,7 +30,7 @@ if (typeof window !== 'undefined') {
     return loader['import']('./html-builder', { name: module.id }).then(function(builder) {
       return builder.call(loader, loads, opts);
     }, function(err) {
-      throw err;
+      throw new Error('Install Polymer/vulcanize via `jspm install npm:vulcanize` for HTML build support. Set System.buildHTML = false to skip HTML builds.');
     });
   };
 

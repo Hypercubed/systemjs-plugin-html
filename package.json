@@ -13,9 +13,6 @@
   "homepage": "https://github.com/Hypercubed/systemjs-plugin-html",
   "jspm": {
     "directories": {},
-    "dependencies": {
-      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.6"
-    },
     "devDependencies": {
       "chai": "npm:chai@^3.0.0",
       "marked": "github:chjj/marked@^0.3.3",
@@ -55,5 +52,8 @@
     "karma-safari-launcher": "^0.1.1",
     "karma-sinon-chai": "^1.0.0",
     "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "vulcanize": "^1.10.2"
   }
 }
