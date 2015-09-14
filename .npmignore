@@ -1,5 +1,6 @@
-jspm_packages
-import-example
-import-two-elements-example
-test
-config.js
+*
+!src
+!html.*
+!html-builder.*
+!README.md
+!package.json

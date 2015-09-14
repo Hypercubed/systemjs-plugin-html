@@ -8,7 +8,7 @@ module.exports = function (config) {
     jspm: {
 			packages: 'jspm_packages/',
       config: 'config.js',
-      loadFiles: ['test/**/test.spec.js'],
+      loadFiles: ['jspm_packages/github/webcomponents/webcomponentsjs@0.7.6/webcomponents-lite.js','test/**/test.spec.js'],
       serveFiles: ['html.js','test/**/*.js','test/**/*.html','test/**/*.css']
     },
     proxies: {

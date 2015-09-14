@@ -5,7 +5,6 @@
 */
 
 if (typeof window !== 'undefined') {
-  System.import('webcomponentsjs/webcomponents-lite.min');
 
   exports.build = false;
 
