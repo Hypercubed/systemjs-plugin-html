@@ -43,25 +43,27 @@ function errCallback(err) {
 }
 
 // from https://github.com/ModuleLoader/es6-module-loader/issues/95#issuecomment-98705035
-function processScript(script) {
-  var source = script.innerHTML.substr(1);
-  return System.module(source).catch(errCallback);
+function processScript(script, baseUrl) {
+  if (script.hasAttribute('src')) {
+    return System.import(new URL(script.getAttribute('src'), baseUrl).href);
+  }
+  return System.module(script.innerText).catch(errCallback);
 }
 
-function processDocument(e) {
+function processDocument(e, baseUrl) {
 
   var Q = [];
 
   // process modules in this document
   var scripts = e.querySelectorAll('script[type="module"]');
   for (var i = 0; i < scripts.length; i++) {
-    Q.push(processScript(scripts[i]));
+    Q.push(processScript(scripts[i], baseUrl));
   }
 
   // process imports (not yet working as expected)
   var links = e.querySelectorAll('link[rel="import"]');
   for (var j = 0; j < links.length; j++) {
-    Q.push(processDocument(links[j].import));
+    Q.push(processDocument(links[j].import, links[j].href));
   }
 
   return Promise.all(Q);
@@ -88,9 +90,9 @@ function importHref(load) {
     var link = load.metadata.link = document.createElement('link');
     link.rel = 'import';
     link.href = load.address;
-
+    var baseUrl = link.href;
     link.onload = function() {
-      processDocument(link.import).then(function() {
+      processDocument(link.import, baseUrl).then(function() {
         _callback();
       });
     };
