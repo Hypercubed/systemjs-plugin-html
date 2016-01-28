@@ -29,7 +29,7 @@ The html file is imported as an [HTML import](http://www.html5rocks.com/en/tutor
 
 ## Bundling
 
-Bundling of html files is done using [Vulcanize](Polymer/vulcanize).  When bundling an `build.html` will be created along side the `build.js` file.  You can disable html imports bundling by setting `System.buildHTML = false`.
+Bundling of html files is done using [Vulcanize](https://github.com/Polymer/vulcanize).  When bundling an `build.html` will be created along side the `build.js` file.  You can disable html imports bundling by setting `System.buildHTML = false`.
 
 ## Tests
 
