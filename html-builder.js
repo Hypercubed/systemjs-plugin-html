@@ -2,7 +2,6 @@
 // Guy Bedford https://github.com/guybedford
 
 var Vulcan = System._nodeRequire('vulcanize');
-//var Minimize = System._nodeRequire('minimize');
 var Promise = global.Promise || System._nodeRequire('es6-promise').Promise;
 
 // it's bad to do this in general, as code is now heavily environment specific
@@ -13,10 +12,11 @@ var isWin = process.platform.match(/^win/);
 function fromFileURL(address) {
   address = address.replace(/^file:(\/+)?/i, '');
 
-  if (!isWin)
-    address = '/' + address;
-  else
+  if (isWin) {
     address = address.replace(/\//g, '\\');
+  } else {
+    address = '/' + address;
+  }
 
   return address;
 }
@@ -30,9 +30,11 @@ function extend(a, b) {
   return a;
 }
 
-function errCallback(err) {
-  setTimeout(function() { throw err; });
-}
+/* function errCallback(err) {
+  setTimeout(function () {
+    throw err;
+  });
+} */
 
 module.exports = function bundle(loads, opts) {
   var loader = this;
@@ -62,29 +64,30 @@ module.exports = function bundle(loads, opts) {
     loose: false // KEEP one whitespace
   }); */
 
-  var rootURL = loader.rootURL || fromFileURL(loader.baseURL);
+  // var rootURL = loader.rootURL || fromFileURL(loader.baseURL);
   var outFile = opts.outFile.replace(/\.js$/, '.html');
 
-  var output = loads.map(function(load) {
-    return '<link rel="import" href="'+fromFileURL(load.address)+'">';
+  var output = loads.map(function (load) {
+    return '<link rel="import" href="' + fromFileURL(load.address) + '">';
   }).join('\n');
 
-  var stubDefines =loads.map(function(load) {
+  var stubDefines = loads.map(function (load) {
     return "System\.register('" + load.name + "', [], false, function() {});";
   }).join('\n');
 
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     fs.writeFileSync(outFile, output);
-    console.log('     Vulcanizing ',outFile);
+    console.log('     Vulcanizing ', outFile);
 
-    vulcan.process(outFile, function(error, output) {
-      if (error) { return reject(error); }
-      //minimize.parse(output, function(error, output) {
-        //if (error) { return reject(error); }
-        fs.writeFileSync(outFile, output);
-        resolve(stubDefines);
-      //});
+    vulcan.process(outFile, function (error, output) {
+      if (error) {
+        return reject(error);
+      }
+      // minimize.parse(output, function(error, output) {
+        // if (error) { return reject(error); }
+      fs.writeFileSync(outFile, output);
+      resolve(stubDefines);
+      // });
     });
   });
-
 };

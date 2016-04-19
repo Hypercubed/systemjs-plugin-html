@@ -2,11 +2,11 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('JS import Polymer web component', function() {
+describe('JS import Polymer web component', function () {
+  var ctor = null;
+  var elm = null;
 
-  var ctor = null, elm = null;
-
-  before(function() {
+  before(function () {
     var d = document.createElement('div');
     d.style.visibility = 'hidden';
     d.innerHTML = '<dom-element-js id="dom-element-js-instance"></dom-element-js>';
@@ -14,7 +14,7 @@ describe('JS import Polymer web component', function() {
 
     elm = document.getElementById('dom-element-js-instance');
 
-    return System.import('test/import-js/dom-element').then(function(data) {
+    return System.import('test/import-js/dom-element').then(function (data) {
       ctor = data.default;
     });
   });
@@ -35,5 +35,4 @@ describe('JS import Polymer web component', function() {
   it('executes the polymer created event', function () {
     expect(elm.createdRan).to.equal(true);
   });
-
 });

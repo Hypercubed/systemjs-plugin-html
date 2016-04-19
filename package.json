@@ -13,17 +13,17 @@
   "homepage": "https://github.com/Hypercubed/systemjs-plugin-html",
   "jspm": {
     "directories": {},
+    "dependencies": {
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22"
+    },
     "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
       "chai": "npm:chai@^3.0.0",
+      "core-js": "npm:core-js@^1.1.4",
       "marked": "github:chjj/marked@^0.3.3",
       "mocha": "npm:mocha@^2.2.5",
-      "polymer": "github:Polymer/polymer@^1.0.6",
-      "traceur": "github:jmcriffey/bower-traceur@0.0.88",
-      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
-    },
-    "buildConfig": {
-      "transpileES6": true,
-      "minify": true
+      "polymer": "github:Polymer/polymer@^1.0.6"
     }
   },
   "description": "systemjs-plugin-html",
@@ -32,28 +32,43 @@
   },
   "scripts": {
     "test": "karma start",
+    "test:bundle": "mkdir temp && jspm bundle test/import-two-elements/main.js temp/build.js",
     "postinstall": "jspm install"
   },
   "author": "Jayson Harshbarger",
   "devDependencies": {
     "chai": "^3.0.0",
-    "jasmine": "^2.3.1",
-    "jasmine-core": "^2.3.4",
-    "jspm": "^0.15.7",
-    "karma": "^0.12.37",
+    "jspm": "^0.16.33",
+    "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
     "karma-ie-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.6",
-    "karma-jspm": "^1.1.5",
+    "karma-jspm": "^2.1.0",
     "karma-mocha": "^0.2.0",
-    "karma-mocha-reporter": "^1.0.2",
+    "karma-mocha-reporter": "^2.0.1",
     "karma-safari-launcher": "^0.1.1",
     "karma-sinon-chai": "^1.0.0",
-    "mocha": "^2.2.5"
+    "lolex": "^1.4.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "xo": "^0.14.0"
   },
   "dependencies": {
     "vulcanize": "^1.10.2"
+  },
+  "xo": {
+    "esnext": false,
+    "space": 2,
+    "envs": [
+      "node",
+      "browser",
+      "mocha"
+    ],
+    "ignores": [
+      "jspm_packages/**",
+      "config.js"
+    ]
   }
 }

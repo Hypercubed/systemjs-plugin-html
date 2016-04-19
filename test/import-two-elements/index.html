@@ -3,17 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>TEST</title>
-
+    <script src="../../jspm_packages/github/webcomponents/webcomponentsjs@0.7.22/webcomponents-lite.js"></script>
   </head>
   <body>
     <dom-element-one></dom-element-one>
     <dom-element-two></dom-element-two>
 
-    <script src="../../jspm_packages/es6-module-loader.js"></script>
     <script src="../../jspm_packages/system.js"></script>
     <script src="../../config.js"></script>
     <script>
-      System.import('./test/import-two-elements/main').then(console.log.bind(console));
+      System.import('./main').then(console.log.bind(console));
     </script>
 
   </body>

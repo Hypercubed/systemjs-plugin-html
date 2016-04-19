@@ -1,17 +1,16 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('HTML import Polymer web component with dependency', function() {
-
+describe('HTML import Polymer web component with dependency', function () {
   var doc = null;
 
-  before(function() {
+  before(function () {
     var d = document.createElement('div');
     d.style.visibility = 'hidden';
     d.innerHTML = '<dom-element-dep id="dom-element-dep-instance"></dom-element-dep>';
     document.body.appendChild(d);
 
-    return System.import('test/import-with-dependency/dom-element.html!').then(function(data) {
+    return System.import('test/import-with-dependency/dom-element.html!').then(function (data) {
       doc = data;
     });
   });
@@ -34,5 +33,4 @@ describe('HTML import Polymer web component with dependency', function() {
     var element = window.document.getElementById('dom-element-dep-instance');
     expect(element.$.content.innerHTML).to.equal('<p><em>I\'m a DOM element. This is my local DOM!</em></p>\n');
   });
-
 });

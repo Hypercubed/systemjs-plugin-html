@@ -1,17 +1,16 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('HTML import Polymer web component', function() {
-
+describe('HTML import Polymer web component', function () {
   var doc = null;
 
-  before(function() {
+  before(function () {
     var d = document.createElement('div');
     d.style.visibility = 'hidden';
     d.innerHTML = '<dom-element id="dom-element-instance"></dom-element>';
     document.body.appendChild(d);
 
-    return System.import('test/import/dom-element.html!').then(function(data) {
+    return System.import('test/import/dom-element.html!').then(function (data) {
       doc = data;
     });
   });
@@ -34,5 +33,4 @@ describe('HTML import Polymer web component', function() {
     var element = window.document.getElementById('dom-element-instance');
     expect(element.createdRan).to.equal(true);
   });
-
 });

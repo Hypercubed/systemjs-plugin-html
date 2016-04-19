@@ -1,12 +1,11 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('JS import with HTML import dependency', function() {
-
+describe('JS import with HTML import dependency', function () {
   var main = null;
 
-  beforeEach(function() {
-    return System.import('test/import-two-elements/main').then(function(m) {
+  beforeEach(function () {
+    return System.import('test/import-two-elements/main').then(function (m) {
       main = m;
     });
   });
