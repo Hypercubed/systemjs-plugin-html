@@ -1,6 +1,6 @@
 {
   "name": "systemjs-plugin-html",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "html",
   "repository": {
     "type": "git",
