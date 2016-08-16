@@ -1,6 +1,5 @@
 
-var chai = require('chai');
-var expect = chai.expect;
+var expect = require('chai').expect;
 
 describe('JS import Polymer web component', function () {
   var ctor = null;

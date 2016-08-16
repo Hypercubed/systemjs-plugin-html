@@ -5,7 +5,7 @@ module.exports = function (config) {
   var configuration = {
     autoWatch: true,
     singleRun: true,
-    frameworks: ['jspm', 'mocha', 'sinon-chai'],
+    frameworks: ['jspm', 'mocha'],
     jspm: {
       stripExtension: false,
       loadFiles: ['jspm_packages/github/webcomponents/webcomponentsjs@0.7.22/webcomponents-lite.js', 'test/**/test.spec.js'],

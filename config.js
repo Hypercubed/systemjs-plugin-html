@@ -3,7 +3,7 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
-    optional: [
+    "optional": [
       "runtime",
       "optimisation.modules.system"
     ]
@@ -14,7 +14,7 @@ System.config({
   },
   buildCSS: false,
   vulvanizeHTML: {
-    excludes: [
+    "excludes": [
       "jspm_packages/github/Polymer/polymer@1.4.0/polymer.html"
     ]
   },

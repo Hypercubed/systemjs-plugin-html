@@ -1,5 +1,4 @@
-var chai = require('chai');
-var expect = chai.expect;
+var expect = require('chai').expect;
 
 describe('Nested HTML imports', function () {
   var doc = null;

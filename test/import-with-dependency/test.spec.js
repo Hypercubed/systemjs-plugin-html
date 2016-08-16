@@ -1,5 +1,4 @@
-var chai = require('chai');
-var expect = chai.expect;
+var expect = require('chai').expect;
 
 describe('HTML import Polymer web component with dependency', function () {
   var doc = null;

@@ -39,21 +39,21 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "jspm": "^0.16.33",
-    "karma": "^0.13.22",
+    "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-firefox-launcher": "^0.1.6",
-    "karma-ie-launcher": "^0.2.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
     "karma-jspm": "^2.1.0",
-    "karma-mocha": "^0.2.0",
+    "karma-mocha": "^1.1.1",
     "karma-mocha-reporter": "^2.0.1",
-    "karma-safari-launcher": "^0.1.1",
+    "karma-safari-launcher": "^1.0.0",
     "karma-sinon-chai": "^1.0.0",
     "lolex": "^1.4.0",
-    "mocha": "^2.2.5",
+    "mocha": "^3.0.2",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "xo": "^0.14.0"
+    "xo": "^0.16.0"
   },
   "dependencies": {
     "vulcanize": "^1.10.2"

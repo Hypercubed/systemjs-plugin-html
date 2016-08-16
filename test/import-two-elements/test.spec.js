@@ -1,5 +1,4 @@
-var chai = require('chai');
-var expect = chai.expect;
+var expect = require('chai').expect;
 
 describe('JS import with HTML import dependency', function () {
   var main = null;
