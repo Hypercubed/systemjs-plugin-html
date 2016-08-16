@@ -20,7 +20,7 @@ if (typeof window === 'undefined') {
       return builder.call(loader, loads, opts);
     }, function (err) {
       if (err.toString().indexOf('Cannot find module \'vulcanize\'') !== -1) {
-        throw new Error('Install Polymer/vulcanize via `npm install vulcanize --save-dev` for HTML build support. Set System.buildHTML = false to skip CSS builds.');
+        throw new Error('Install Polymer/vulcanize via `npm install vulcanize --save-dev` for HTML build support. Set System.buildHTML = false to skip HTML builds.');
       }
       throw err;
     });
