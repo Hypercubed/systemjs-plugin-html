@@ -16,13 +16,8 @@ if (typeof window === 'undefined') {
     if (loader.buildHTML === false) {
       return '';
     }
-    return loader['import']('./html-builder', {name: module.id}).then(function (builder) {
+    return getBuilder().then(function (builder) {
       return builder.call(loader, loads, opts);
-    }, function (err) {
-      if (err.toString().indexOf('Cannot find module \'vulcanize\'') !== -1) {
-        throw new Error('Install Polymer/vulcanize via `npm install vulcanize --save-dev` for HTML build support. Set System.buildHTML = false to skip HTML builds.');
-      }
-      throw err;
     });
   };
 } else {
@@ -102,4 +97,14 @@ function importHref(load) {
 
     head.appendChild(link);
   });
+}
+
+function getBuilder() {
+  return System.import('./html-builder', {name: module.id})
+    .catch(function (err) {
+      if (err.toString().indexOf('Cannot find module \'vulcanize\'') !== -1) {
+        throw new Error('Install Polymer/vulcanize via `npm install vulcanize --save-dev` for HTML build support. Set System.buildHTML = false to skip HTML builds.');
+      }
+      throw err;
+    });
 }
